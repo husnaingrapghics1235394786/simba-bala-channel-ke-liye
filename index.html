@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHMAD DESIGNS FOR U</title>
+<style>
+  :root{
+    --bg: #0b0b0d;
+    --bg-soft: #131316;
+    --ink: #f3f1ea;
+    --ink-dim: #a8a6a1;
+    --accent: #ff5a36;
+    --accent-2: #7ee0c3;
+    --line: rgba(243,241,234,0.12);
+    --radius: 2px;
+    --font-display: "Fraunces", "Georgia", serif;
+    --font-body: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ background:var(--bg); scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  :focus-visible{
+    outline:2px solid var(--accent-2);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    width:100%;
+    padding:0 20px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px;
+    background:rgba(11,11,13,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-mark{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    color:var(--accent-2);
+  }
+  .nav-mark b{ color:var(--ink); font-weight:600; }
+  .nav a.nav-link{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    padding:8px 12px;
+    border-radius:var(--radius);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .nav a.nav-link:hover{ color:var(--ink); border-color:var(--ink-dim); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 20px 48px;
+    position:relative;
+  }
+  .hero-eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:22px;
+  }
+  .hero-eyebrow::before{
+    content:"";
+    width:20px; height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.6rem, 11vw, 4.2rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--accent-2);
+  }
+  .hero-sub{
+    margin-top:22px;
+    max-width:46ch;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+  }
+  .hero-cta-row{
+    margin-top:32px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    padding:14px 20px;
+    border-radius:var(--radius);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#111;
+    font-weight:600;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{ border-color:var(--ink-dim); }
+
+  .hero-frame{
+    margin-top:44px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    aspect-ratio: 4/5;
+    position:relative;
+    background:linear-gradient(160deg, #17131c, #0b0b0d 60%);
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover;
+    display:block;
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-frame::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(11,11,13,0.55), transparent 45%);
+  }
+  .hero-frame-tag{
+    position:absolute; left:14px; bottom:14px; z-index:2;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink);
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section{
+    padding:56px 20px;
+    border-top:1px solid var(--line);
+  }
+  .section-label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.16em;
+    color:var(--ink-dim);
+    margin-bottom:18px;
+  }
+
+  /* ---------- ABOUT / DESCRIPTION ---------- */
+  .about h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem, 6vw, 2.2rem);
+    font-weight:500;
+    line-height:1.25;
+    max-width:22ch;
+  }
+  .about h2 em{ font-style:italic; color:var(--accent); font-weight:400; }
+  .about p{
+    margin-top:20px;
+    color:var(--ink-dim);
+    max-width:56ch;
+    font-size:0.98rem;
+  }
+  .about-meta{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .about-meta div{
+    border-top:1px solid var(--line);
+    padding-top:12px;
+  }
+  .about-meta span{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:var(--accent-2);
+    margin-bottom:6px;
+  }
+  .about-meta strong{ font-weight:500; font-size:0.94rem; }
+
+  /* ---------- DOWNLOADS ---------- */
+  .downloads-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .dl-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--bg-soft);
+  }
+  .dl-thumb{
+    aspect-ratio:4/5;
+    overflow:hidden;
+    position:relative;
+  }
+  .dl-thumb img{
+    width:100%; height:100%; object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+  }
+  .dl-card:hover .dl-thumb img{ transform:scale(1.04); }
+  .dl-index{
+    position:absolute; top:12px; left:12px;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.1em;
+    color:var(--ink);
+    background:rgba(11,11,13,0.6);
+    padding:4px 8px;
+    border-radius:var(--radius);
+  }
+  .dl-body{
+    padding:16px;
+  }
+  .dl-body h3{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:1.15rem;
+    margin-bottom:6px;
+  }
+  .dl-body p{
+    color:var(--ink-dim);
+    font-size:0.88rem;
+    margin-bottom:16px;
+  }
+  .dl-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--ink-dim);
+    letter-spacing:0.06em;
+    margin-bottom:14px;
+  }
+  .dl-btn{
+    width:100%;
+    justify-content:center;
+    background:transparent;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    font-weight:600;
+  }
+  .dl-btn:hover{
+    background:var(--accent);
+    color:#111;
+  }
+  .dl-btn svg{ width:14px; height:14px; }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    padding:40px 20px 60px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .footer-mark{
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    text-transform:uppercase;
+  }
+  .footer-note{
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--ink-dim);
+  }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width:760px){
+    .wrap{ max-width:1120px; margin:0 auto; }
+    .nav{ padding:20px 40px; }
+    .hero, .section, .footer{ padding-left:40px; padding-right:40px; }
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 0.9fr;
+      gap:48px;
+      align-items:center;
+      padding-top:90px;
+      padding-bottom:80px;
+    }
+    .hero-frame{ margin-top:0; aspect-ratio:3/4; }
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+    }
+    .about-meta{ grid-template-columns:1fr 1fr; align-self:start; }
+    .downloads-grid{ grid-template-columns:1fr 1fr; }
+    .footer{
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+    }
+  }
+
+  @font-face{
+    font-family:"Fraunces"; src:local("Georgia");
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-mark"><b>AHMAD</b> DESIGNS FOR U</div>
+  <a class="nav-link" href="#downloads">DOWNLOADS ↓</a>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div>
+      <div class="hero-eyebrow">STUDIO&nbsp;·&nbsp;VISUAL&nbsp;DESIGN</div>
+      <h1>Designs<br>made <em>for</em><br>you.</h1>
+      <p class="hero-sub">
+       Simba bala api , jo bhi deakh rahi hain , iss ko neche scroll karain, 2 banner hain , inn me se jo banner acha lagta hai download karain. Ye dono banner aap ke channel ke liye me ne banaye hain.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#downloads">Get free assets</a>
+        <a class="btn btn-ghost" href="#about">About the studio</a>
+      </div>
+    </div>
+    
+  </header>
+
+ 
+  <section class="section" id="downloads">
+    <div class="section-label">FREE DOWNLOADS</div>
+    <div class="downloads-grid">
+
+      <article class="dl-card">
+        <div class="dl-thumb">
+          <span class="dl-index">01</span>
+          <img src="banner2.png" alt="Aurora Grid poster artwork preview">
+        </div>
+        <div class="dl-body">
+          <h3>Aurora Grid</h3>
+          <p>A dark, particle-lit poster study exploring layered arcs and soft glow.</p>
+          <div class="dl-meta">
+            <span>PNG · 1600×2000</span>
+            <span>47 KB</span>
+          </div>
+          <a class="btn dl-btn" href="banner2.png" download="banner2.png">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            Download image
+          </a>
+        </div>
+      </article>
+
+      <article class="dl-card">
+        <div class="dl-thumb">
+          <span class="dl-index">02</span>
+          <img src="banner1.png" alt="Terrain Lines poster artwork preview">
+        </div>
+        <div class="dl-body">
+          <h3>Terrain Lines</h3>
+          <p>Contour-style linework in muted green, built from layered sine waves.</p>
+          <div class="dl-meta">
+            <span>PNG · 1600×2000</span>
+            <span>141 KB</span>
+          </div>
+          <a class="btn dl-btn" href="banner2.png" download="banner1.png">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            Download image
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-mark">AHMAD DESIGNS FOR U</div>
+    <div class="footer-note">© 2026 — BUILT WITH CARE, ONE PIXEL AT A TIME</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
